@@ -1,0 +1,73 @@
+
+
+Tabela Clientes
+
+CREATE TABLE clientes (
+    id_client SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    cpf VARCHAR(15),
+    street VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    postal_code VARCHAR(20),
+    active BOOLEAN
+);
+Tabela Vendedores
+CREATE TABLE vendedores (
+    id_seller SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    cpf VARCHAR(15),
+    salary VARCHAR(20)
+);
+
+Tabela Vendas
+
+CREATE TABLE vendas (
+    id SERIAL PRIMARY KEY,
+    product_code BIGINT,
+    product_name VARCHAR(255),
+    price_product DECIMAL,
+    qty_product INT,
+    amount DECIMAL
+);
+
+
+select * from vendedores;
+select * from clientes;
+select * from vendas;
+
+
+//EXERCICIO1
+
+SELECT price_product
+FROM vendas
+WHERE price_product > 10.00;
+
+//EXERCICIO2
+
+UPDATE vendas
+SET amount = 0
+WHERE amount IS NULL;
+
+//EXERCICIO 3
+
+SELECT salary
+FROM vendedores
+ORDER BY salary DESC;
+
+//EXERCICIO 4
+
+DELETE FROM clientes
+WHERE id_client = 6;
+
+//EXERCICIO 5
+
+SELECT id_client AS id, name AS name, email AS email
+FROM clientes
+WHERE email LIKE '%zup.com.br'
+UNION
+SELECT id_seller AS id, name AS name, email AS email
+FROM vendedores
+WHERE email LIKE '%zup.com.br';
